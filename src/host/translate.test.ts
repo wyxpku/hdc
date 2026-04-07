@@ -129,7 +129,7 @@ describe('TranslateCommand ForwardPort', () => {
     expect(result).toBe('');
     expect(cmd.cmdFlag).toBe(CommandFlag.CMD_FORWARD_INIT);
     expect(cmd.bJumpDo).toBe(false);
-    expect(cmd.parameters).toBe('fport fport tcp:12345 tcp:54321');
+    expect(cmd.parameters).toBe('fport tcp:12345 tcp:54321');
   });
 
   it('should reject invalid fport command', () => {

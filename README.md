@@ -1,4 +1,4 @@
-# hdc-node
+# hdc-node 👾
 
 Node.js implementation of OpenHarmony HDC (Host Device Connector).
 

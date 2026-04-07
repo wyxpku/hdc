@@ -48,7 +48,7 @@ export class TlvBuf {
       length = data.length;
     }
 
-    if (length === 0 || length > TLV_VALUE_MAX_LEN || !value) {
+    if (length === 0 || length > TLV_VALUE_MAX_LEN || data.length === 0) {
       return false;
     }
 
