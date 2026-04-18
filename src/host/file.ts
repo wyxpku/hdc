@@ -86,7 +86,7 @@ export class HdcFileTransfer extends EventEmitter {
     this.transferId = GetRandomString(8);
     this.options = {
       chunkSize: options.chunkSize || DEFAULT_CHUNK_SIZE,
-      onProgress: options.onProgress,
+      onProgress: options.onProgress ?? (() => {}),
       preserveTimestamp: options.preserveTimestamp ?? false,
       compress: options.compress ?? false,
     };
@@ -240,15 +240,16 @@ export class HdcFileSender extends HdcFileTransfer {
         highWaterMark: this.options.chunkSize,
       });
 
-      this.fileStream.on('data', (chunk: Buffer) => {
+      this.fileStream.on('data', (chunk: string | Buffer) => {
         if (this.state === TransferState.CANCELLED) {
           this.fileStream?.destroy();
           return;
         }
 
-        const packet = createPacket(chunk);
+        const buf = Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk);
+        const packet = createPacket(buf);
         this.socket.write(packet);
-        this.bytesTransferred += chunk.length;
+        this.bytesTransferred += buf.length;
         this.emitProgress();
       });
 

@@ -265,6 +265,7 @@ export class HdcSession extends EventEmitter {
       
       try {
         const packet = parsePacket(packetData);
+        if (!packet) continue;
         this.handlePacket(packet);
       } catch (err) {
         this.emit('error', err as Error);

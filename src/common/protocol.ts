@@ -192,6 +192,9 @@ export const MAX_SESSION_ID = 0xFFFFFFFF;
 // Packet header size
 export const PACKET_HEADER_SIZE = 8; // flag(2) + version(2) + dataSize(4)
 
+// Maximum payload size per packet
+export const PKG_PAYLOAD_MAX_SIZE = MAX_SIZE_IOBUF;
+
 /**
  * Check if a command ID is valid
  */

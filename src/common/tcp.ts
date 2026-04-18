@@ -221,6 +221,8 @@ export class TcpServer extends EventEmitter {
       host: options.host || '0.0.0.0',
       port: options.port || 8710,
       timeout: options.timeout || 30000,
+      keepAlive: options.keepAlive ?? true,
+      noDelay: options.noDelay ?? false,
     };
   }
 

@@ -174,6 +174,11 @@ export function decodeCtrlMessage(buf: Buffer): CtrlMessage | null {
 }
 
 /**
+ * Result of parsing a packet
+ */
+export type PacketParseResult = { header: PacketHeader; payload: Buffer };
+
+/**
  * Session handshake message
  */
 export interface HandshakeMessage {

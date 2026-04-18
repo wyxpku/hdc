@@ -212,10 +212,11 @@ export class HdcAppManager extends EventEmitter {
     return new Promise((resolve, reject) => {
       const stream = fs.createReadStream(filePath, { highWaterMark: 64 * 1024 });
 
-      stream.on('data', (chunk: Buffer) => {
-        const packet = createPacket(chunk);
+      stream.on('data', (chunk: string | Buffer) => {
+        const buf = Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk);
+        const packet = createPacket(buf);
         this.socket.write(packet);
-        this.bytesTransferred += chunk.length;
+        this.bytesTransferred += buf.length;
         this.emit('progress', {
           bytesTransferred: this.bytesTransferred,
           totalBytes: this.totalBytes,

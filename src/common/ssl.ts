@@ -35,7 +35,7 @@ export interface SSLOptions {
   cert?: string | Buffer;
   ca?: string | Buffer;
   rejectUnauthorized?: boolean;
-  minVersion?: string;
+  minVersion?: tls.SecureVersion;
   servername?: string;
 }
 
@@ -64,7 +64,7 @@ export class HdcSSL extends EventEmitter {
     super();
     this.options = {
       ...options,
-      minVersion: options.minVersion || SSL_MIN_VERSION,
+      minVersion: options.minVersion || ('TLSv1.2' as tls.SecureVersion),
       rejectUnauthorized: options.rejectUnauthorized ?? false,
     };
     this.sessionId = GetRandomString(16);
@@ -202,9 +202,9 @@ export class HdcSSL extends EventEmitter {
       sessionId: this.sessionId,
       state: this.state,
       cipher: this.getCipher()?.name,
-      protocol: this.getProtocol(),
+      protocol: this.getProtocol() ?? undefined,
       authorized: this.authorized,
-      authorizationError: this.socket?.authorizationError,
+      authorizationError: this.socket?.authorizationError?.message,
       startTime: Date.now(),
     };
   }

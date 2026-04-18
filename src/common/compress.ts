@@ -150,7 +150,7 @@ export class HdcCompress {
           break;
 
         case CompressType.BROTLI:
-          zlib.brotliCompress(data, { quality: this.level }, (err, result) => {
+          zlib.brotliCompress(data, { params: { [zlib.constants.BROTLI_PARAM_QUALITY]: this.level } }, (err, result) => {
             if (err) reject(err);
             else resolve(result);
           });
@@ -267,7 +267,7 @@ export async function inflate(data: Buffer): Promise<Buffer> {
  */
 export async function brotliCompress(data: Buffer, quality: number = DEFAULT_COMPRESS_LEVEL): Promise<Buffer> {
   return new Promise((resolve, reject) => {
-    zlib.brotliCompress(data, { quality }, (err, result) => {
+    zlib.brotliCompress(data, { params: { [zlib.constants.BROTLI_PARAM_QUALITY]: quality } }, (err, result) => {
       if (err) reject(err);
       else resolve(result);
     });
