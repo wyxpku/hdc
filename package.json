@@ -32,9 +32,9 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wyxpku/hdc.git"
+    "url": "git+https://github.com/wyxpku/hdc-node.git"
   },
-  "homepage": "https://github.com/wyxpku/hdc#readme",
+  "homepage": "https://github.com/wyxpku/hdc-node#readme",
   "devDependencies": {
     "@types/node": "^20.10.0",
     "typescript": "^5.3.0",

@@ -82,7 +82,7 @@ hdc-node 采用与官方 HDC 工具相同的客户端-服务端架构：
 ## 相关链接
 
 - **官方 C++ 实现**: <https://gitcode.com/openharmony/developtools_hdc.git>
-- **本项目**: <https://github.com/wyxpku/hdc>
+- **本项目**: <https://github.com/wyxpku/hdc-node>
 
 ## 许可证
 
