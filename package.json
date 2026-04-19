@@ -1,15 +1,19 @@
 {
   "name": "hdc-node",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Node.js implementation of OpenHarmony HDC (Host Device Connector)",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": {
-    "hdc": "./dist/cli.js"
+    "hdc": "dist/cli.js"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc",
+    "prepublishOnly": "npm run build && chmod +x dist/cli.js",
     "test": "vitest run",
     "test:watch": "vitest",
     "lint": "eslint src --ext .ts",
@@ -17,12 +21,20 @@
   },
   "keywords": [
     "openharmony",
+    "harmonyos",
     "hdc",
     "device-connector",
-    "debugging"
+    "debugging",
+    "android",
+    "ohos"
   ],
   "author": "Ethan",
   "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wyxpku/hdc.git"
+  },
+  "homepage": "https://github.com/wyxpku/hdc#readme",
   "devDependencies": {
     "@types/node": "^20.10.0",
     "typescript": "^5.3.0",
