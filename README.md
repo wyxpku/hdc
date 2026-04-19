@@ -2,6 +2,8 @@
 
 Node.js implementation of [OpenHarmony HDC](https://gitcode.com/openharmony/developtools_hdc.git) (Host Device Connector) — the debugging and file transfer tool for HarmonyOS / OpenHarmony devices.
 
+[中文文档](README.zh.md)
+
 ## Install
 
 ```bash
@@ -100,58 +102,5 @@ hdc-node follows the same client-server architecture as the official HDC tool:
 - **This project**: <https://github.com/wyxpku/hdc>
 
 ## License
-
-Apache-2.0
-
----
-
-## 中文说明
-
-[OpenHarmony HDC](https://gitcode.com/openharmony/developtools_hdc.git) (Harmony Device Connector) 的 Node.js 实现 —— HarmonyOS / OpenHarmony 设备的调试与文件传输工具。
-
-### 安装
-
-```bash
-npm install -g hdc-node
-```
-
-安装后即可使用 `hdc` 命令：
-
-```bash
-hdc list targets
-```
-
-**前置条件：** Node.js >= 18。USB 设备发现需要同时安装官方 [HDC SDK](https://developer.huawei.com/consumer/cn/download/)（hdc-node 会自动检测并使用）。
-
-### 常用命令
-
-```bash
-hdc list targets              # 列出已连接设备
-hdc shell                     # 交互式 Shell
-hdc shell ls /data/local/tmp  # 执行单条命令
-hdc file send ./app.hap /data/local/tmp/  # 推送文件
-hdc file recv /data/log.txt               # 拉取文件到当前目录
-hdc file recv /data/log.txt ./            # 指定本地路径
-hdc install /path/to/app.hap  # 安装应用
-hdc hilog                     # 查看设备日志
-hdc start                     # 启动服务端
-hdc kill                      # 停止服务端
-```
-
-### 编程接口
-
-```typescript
-import { HdcClient } from 'hdc-node';
-
-const client = new HdcClient({ host: '127.0.0.1', port: 8710 });
-await client.connect();
-
-const result = await client.executeCommand('shell ls /data/local/tmp');
-console.log(result);
-
-await client.disconnect();
-```
-
-### 许可证
 
 Apache-2.0
