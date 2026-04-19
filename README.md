@@ -99,7 +99,7 @@ hdc-node follows the same client-server architecture as the official HDC tool:
 ## Related
 
 - **Original C++ implementation**: <https://gitcode.com/openharmony/developtools_hdc.git>
-- **This project**: <https://github.com/wyxpku/hdc>
+- **This project**: <https://github.com/wyxpku/hdc-node>
 
 ## License
 
